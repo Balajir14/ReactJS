@@ -1,26 +1,23 @@
-import './App.css'
-import Counter from './components/Counter'
-import SimpleList from './components/SimpleList'
-import Toggle from './components/Toggle'
-import User from './components/User'
+// import './App.css'
+import Form from './components/Form';
 
-function Greeting () {
+function Greeting ({name, age, message}) {
+  // const {name, age} = props;
   return(
     <>
-      <h2>Welcome...</h2>
+      <h2>Welcome {name}, My age is {age}: {message} </h2>
     </>
   )
 }
 
 function App() {
+  const name = "John";
+  const age = "10";
+  const message = "This is my new meesage"
   return (
     <>
-      {/* <h1>Hello World!</h1> */}
-      {/* <Greeting /> */}
-      {/* <Counter /> */}
-      {/* <Toggle /> */}
-      {/* <User /> */}
-      <SimpleList />
+      {/* <Greeting name={name} age={age} message={message} /> */}
+      <Form />
     </>
   )
 }
