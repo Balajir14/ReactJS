@@ -16,7 +16,8 @@ function Greeting ({name, age, message}) {
 function App() {
   return (
     <>
-      <Loading />
+    <Greeting name="john" />
+    <Loading isLoading="true" />
     </>
   )
 }
