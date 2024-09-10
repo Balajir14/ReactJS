@@ -1,5 +1,8 @@
-// import './App.css'
-import Form from './components/Form';
+import Limit from './components/Limit';
+import LimitHook from './components/LimitHook';
+import Loading from './components/Loading';
+import NewForm from './components/NewForm';
+import NewHook from './components/NewHook';
 
 function Greeting ({name, age, message}) {
   // const {name, age} = props;
@@ -11,13 +14,9 @@ function Greeting ({name, age, message}) {
 }
 
 function App() {
-  const name = "John";
-  const age = "10";
-  const message = "This is my new meesage"
   return (
     <>
-      {/* <Greeting name={name} age={age} message={message} /> */}
-      <Form />
+      <Loading />
     </>
   )
 }
