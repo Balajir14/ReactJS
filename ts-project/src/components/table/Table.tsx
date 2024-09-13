@@ -7,7 +7,7 @@ import {
   Table,
   TableBody,
 } from "@mui/material";
-import { rows } from "../../common/common";
+import { rows } from "../../common/commonFiles";
 
 export default function TableComponent() {
   return (

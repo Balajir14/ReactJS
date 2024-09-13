@@ -4,6 +4,8 @@ import Home from "./components/home/Home";
 import Greeting from "./components/home/Greeting";
 import TableComponent from "./components/table/Table";
 import ApiTable from "./components/table/ApiTable";
+import Mui from "./components/mui/Mui";
+import Todo from "./components/home/Todo";
 
 function App() {
   return (
@@ -14,6 +16,9 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/table" element={<TableComponent />} />
           <Route path="/api" element={<ApiTable />} />
+
+          <Route path="/mui" element={<Mui />} />
+          <Route path="/todo" element={<Todo />} />
         </Routes>
       </BrowserRouter>
     </>
