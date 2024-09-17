@@ -32,6 +32,21 @@ export default function Todo() {
 
   const addTodo = () => {
     setAlert(false);
+
+    const isDuplicate = todo.some(
+      (item) => item.task.toLowerCase() === task.trim().toLowerCase()
+    );
+
+    if (isDuplicate) {
+      setAlert(true); // show alert
+
+      setTimeout(() => {
+        setAlert(false);
+      }, 3000); // hide alert
+
+      return;
+    }
+
     if (task.trim()) {
       setTodo([...todo, { id: Date.now(), task, status }]);
       setTask("");
@@ -60,9 +75,17 @@ export default function Todo() {
     setEditingTaskId(id);
   };
 
+  // const isTaskUnchanged = () => {
+  //   if (editingTaskId !== null) {
+  //     const editingTask = todo.find((item) => item.id === editingTaskId);
+  //     return editingTask ? editingTask.task === task : false;
+  //   }
+  //   return false;
+  // };
+
   return (
     <>
-      {alert && <Alert severity="warning">Empty task provided!</Alert>}
+      {alert && <Alert severity="warning">Oops! Something went wrong.</Alert>}
       <Container
         maxWidth="sm"
         sx={{
@@ -88,7 +111,11 @@ export default function Todo() {
           id="demo-simple-select"
           value={status}
           label="Age"
-          onChange={(event) => setStatus(event.target.value)}
+          onChange={(event) =>
+            setStatus(
+              event.target.value as "started" | "progress" | "completed"
+            )
+          }
           fullWidth
           sx={{ mb: 3 }}
         >
@@ -102,6 +129,8 @@ export default function Todo() {
           sx={{ mb: 3, backgroundColor: "#A1D6B2", color: "black" }}
           // onClick={addTodo}
           onClick={editingTaskId !== null ? updateTodo : addTodo}
+          // disabled={false}
+          // disabled={editingTaskId !== null && isTaskUnchanged()}
         >
           {editingTaskId ? "Edit Task" : "Add Task"}
         </Button>
@@ -112,7 +141,15 @@ export default function Todo() {
               key={item.id}
               secondaryAction={
                 <>
-                  <Button color="secondary">{item.status}</Button>
+                  <Button
+                    color="secondary"
+                    sx={{
+                      backgroundColor: getColor(item.status),
+                      color: "black",
+                    }}
+                  >
+                    {item.status}
+                  </Button>
                   <IconButton
                     onClick={() => {
                       handleEdit(item.id, item.task);
