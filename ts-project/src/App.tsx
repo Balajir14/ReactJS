@@ -6,6 +6,7 @@ import TableComponent from "./components/table/Table";
 import ApiTable from "./components/table/ApiTable";
 import Mui from "./components/mui/Mui";
 import Todo from "./components/home/Todo";
+import Parent from "./components/callback/Parent";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
 
           <Route path="/mui" element={<Mui />} />
           <Route path="/todo" element={<Todo />} />
+          <Route path="/parent" element={<Parent />} />
         </Routes>
       </BrowserRouter>
     </>

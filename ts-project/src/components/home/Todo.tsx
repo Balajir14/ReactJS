@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { getColor } from "../../common/todo";
 
 interface Todo {
@@ -29,6 +29,7 @@ export default function Todo() {
     "started"
   );
   const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+  const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const addTodo = () => {
     setAlert(false);
@@ -73,15 +74,19 @@ export default function Todo() {
   const handleEdit = (id: number, task: string) => {
     setTask(task);
     setEditingTaskId(id);
+    setIsEditing(true);
   };
 
-  // const isTaskUnchanged = () => {
-  //   if (editingTaskId !== null) {
-  //     const editingTask = todo.find((item) => item.id === editingTaskId);
-  //     return editingTask ? editingTask.task === task : false;
-  //   }
-  //   return false;
-  // };
+  useEffect(() => {
+    if (!task) return;
+    const originalTask = todo.find((item) => item.id === editingTaskId);
+
+    if (originalTask?.task !== task) {
+      setIsEditing(false);
+    } else {
+      setIsEditing(true);
+    }
+  }, [task]);
 
   return (
     <>
@@ -127,10 +132,8 @@ export default function Todo() {
           variant="contained"
           fullWidth
           sx={{ mb: 3, backgroundColor: "#A1D6B2", color: "black" }}
-          // onClick={addTodo}
           onClick={editingTaskId !== null ? updateTodo : addTodo}
-          // disabled={false}
-          // disabled={editingTaskId !== null && isTaskUnchanged()}
+          disabled={isEditing}
         >
           {editingTaskId ? "Edit Task" : "Add Task"}
         </Button>
