@@ -1,9 +1,10 @@
-import { Link } from "@mui/material";
 import Button from "@mui/material/Button";
 import { useTheme } from "../../context/ThemeContext";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Greeting() {
   const data = useTheme();
+  const navigate = useNavigate();
   return (
     <>
       <h1>Welcome</h1>
@@ -11,10 +12,10 @@ export default function Greeting() {
       <Button variant="outlined" href="/home">
         Go to Home
       </Button>
-      <Button variant="outlined" href="/todo">
+      <Button variant="outlined" onClick={() => navigate("/todo")}>
         Todo App
       </Button>
-      <Link href="/todo">Todo App</Link>
+      <Link to="/todo">Todo App\</Link>
     </>
   );
 }

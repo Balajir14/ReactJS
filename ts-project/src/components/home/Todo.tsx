@@ -22,7 +22,7 @@ interface Todo {
 }
 
 export default function Todo() {
-  const [task, setTask] = useState<string>("");
+  const [task, setTask] = useState<string>();
   const [todo, setTodo] = useState<Todo[]>([]);
   const [alert, setAlert] = useState<boolean>(false);
   const [status, setStatus] = useState<"started" | "progress" | "completed">(
