@@ -2,6 +2,7 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { ageCalculator } from "../../common/ageCalculator";
 import { useCurrentUser, UserTypeWithoutAge } from "../../context/UserContext";
+import { FormErrors, validateForm } from "./validation";
 
 // interface FormDataType {
 //   firstName: string;
@@ -30,6 +31,8 @@ export default function RegisterForm() {
     confirmPassword: "",
   });
 
+  const [errors, setErrors] = useState<FormErrors>({});
+
   const handleChange = (
     e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -51,6 +54,11 @@ export default function RegisterForm() {
       password,
       confirmPassword,
     } = formData;
+
+    const validatedErrors = validateForm(formData);
+    setErrors(validatedErrors);
+
+    console.log(errors);
 
     const newValue = {
       firstName,
@@ -85,8 +93,10 @@ export default function RegisterForm() {
               name="firstName"
               value={formData.firstName}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.firstName}
+              helperText={errors.firstName}
             />
             <TextField
               variant="outlined"
@@ -94,8 +104,10 @@ export default function RegisterForm() {
               name="lastName"
               value={formData.lastName}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.lastName}
+              helperText={errors.lastName}
             />
             <TextField
               variant="outlined"
@@ -103,7 +115,7 @@ export default function RegisterForm() {
               name="middleName"
               value={formData.middleName}
               onChange={handleChange}
-              required
+              // required
               fullWidth
             />
             <TextField
@@ -113,8 +125,10 @@ export default function RegisterForm() {
               name="dob"
               value={formData.dob}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.dob}
+              helperText={errors.dob}
             />
             <TextField
               variant="outlined"
@@ -122,8 +136,10 @@ export default function RegisterForm() {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.email}
+              helperText={errors.email}
             />
             <TextField
               variant="outlined"
@@ -131,8 +147,10 @@ export default function RegisterForm() {
               name="phone"
               value={formData.phone}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.phone}
+              helperText={errors.phone}
             />
             <TextField
               variant="outlined"
@@ -142,8 +160,10 @@ export default function RegisterForm() {
               multiline
               rows={3}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.address}
+              helperText={errors.address}
             />
             <TextField
               variant="outlined"
@@ -151,8 +171,10 @@ export default function RegisterForm() {
               name="password"
               value={formData.password}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.password}
+              helperText={errors.password}
             />
             <TextField
               variant="outlined"
@@ -160,8 +182,10 @@ export default function RegisterForm() {
               name="confirmPassword"
               value={formData.confirmPassword}
               onChange={handleChange}
-              required
+              // required
               fullWidth
+              error={!!errors.confirmPassword}
+              helperText={errors.confirmPassword}
             />
           </Box>
           <Button type="submit" fullWidth variant="contained" sx={{ mt: 2 }}>
