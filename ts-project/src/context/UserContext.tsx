@@ -40,8 +40,8 @@ export default function UserProvider({ children }: { children: ReactNode }) {
 
 export const useCurrentUser = () => {
   const context = useContext(UserContext);
-  if (!context) {
-    console.log("useTheme is not defined.");
-  }
+  // if (!context) {
+  //   console.log("useTheme is not defined.");
+  // }
   return context;
 };

@@ -46,9 +46,16 @@ export function validateForm(formData: FormErrors) {
   }
   if (!formData.password) {
     errors.password = "Password is required.";
+  } else if (formData.password.length < 6) {
+    errors.password = "Password must be at least 6 characters";
+  } else if (formData.password.length > 15) {
+    errors.password = "Password must be less than 15 characters";
   }
+
   if (!formData.confirmPassword) {
     errors.confirmPassword = "Confirm Password required.";
+  } else if (formData.password !== formData.confirmPassword) {
+    errors.confirmPassword = "Passwords does not match.";
   }
 
   return errors;

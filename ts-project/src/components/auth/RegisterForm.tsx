@@ -60,22 +60,26 @@ export default function RegisterForm() {
 
     console.log(errors);
 
-    const newValue = {
-      firstName,
-      middleName,
-      lastName,
-      dob,
-      age,
-      phone,
-      address,
-      email,
-      password,
-      confirmPassword,
-    };
+    if (Object.keys(validatedErrors).length === 0) {
+      const newValue = {
+        firstName,
+        middleName,
+        lastName,
+        dob,
+        age,
+        phone,
+        address,
+        email,
+        password,
+        confirmPassword,
+      };
 
-    // const newValues = {...formData, age}
+      // const newValues = {...formData, age}
 
-    userContext?.storeUserData(newValue);
+      userContext?.storeUserData(newValue);
+    } else {
+      alert("Validation required.");
+    }
   };
 
   return (
