@@ -15,14 +15,16 @@ interface BlogContextType {
 }
 
 // STEP : 1 -> Create Context
-const BlogContext = createContext<BlogContextType | undefined>(undefined);
+export const BlogContext = createContext<BlogContextType | undefined>(
+  undefined
+);
 
 // STEP : 2 -> Create Provider (connect between store/context and components)
 export default function BlogProvider({ children }: { children: ReactNode }) {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   const addBlog = (blog: Blog) => {
-    setBlogs([...blogs, { ...blog, id: Date.now() }]);
+    setBlogs([...blogs, { ...blog }]);
   };
 
   const getBlog = (id: number) => {

@@ -13,37 +13,48 @@ import UserProvider from "./context/UserContext";
 import RegisterForm from "./components/auth/RegisterForm";
 import { lazy, Suspense } from "react";
 import BlogProvider from "./context/BlogContext";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 const Greeting = lazy(() => import("./components/home/Greeting"));
 const Home = lazy(() => import("./components/home/Home"));
 const Todo = lazy(() => import("./components/home/Todo"));
+const AddBlog = lazy(() => import("./components/blog/AddBlog"));
+const BlogList = lazy(() => import("./components/blog/BlogList"));
+const BlogDetail = lazy(() => import("./components/blog/BlogDetails"));
 
 function App() {
   return (
     <>
-      <ThemeProvider>
-        <UserProvider>
-          <BlogProvider>
-            <BrowserRouter>
-              <Suspense fallback={<div>Loading...</div>}>
-                <Routes>
-                  <Route path="/" element={<Greeting />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/table" element={<TableComponent />} />
-                  <Route path="/api" element={<ApiTable />} />
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <ThemeProvider>
+          <UserProvider>
+            <BlogProvider>
+              <BrowserRouter>
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Routes>
+                    <Route path="/" element={<Greeting />} />
+                    <Route path="/home" element={<Home />} />
+                    <Route path="/table" element={<TableComponent />} />
+                    <Route path="/api" element={<ApiTable />} />
 
-                  <Route path="/mui" element={<Mui />} />
-                  <Route path="/todo" element={<Todo />} />
-                  <Route path="/parent" element={<Parent />} />
-                  <Route path="/toggle" element={<ThemeToogleButton />} />
+                    <Route path="/mui" element={<Mui />} />
+                    <Route path="/todo" element={<Todo />} />
+                    <Route path="/parent" element={<Parent />} />
+                    <Route path="/toggle" element={<ThemeToogleButton />} />
 
-                  <Route path="/register" element={<RegisterForm />} />
-                </Routes>
-              </Suspense>
-            </BrowserRouter>
-          </BlogProvider>
-        </UserProvider>
-      </ThemeProvider>
+                    <Route path="/register" element={<RegisterForm />} />
+
+                    <Route path="/add-blog" element={<AddBlog />} />
+                    <Route path="/blog-list" element={<BlogList />} />
+                    <Route path="/blog-detail/:id" element={<BlogDetail />} />
+                  </Routes>
+                </Suspense>
+              </BrowserRouter>
+            </BlogProvider>
+          </UserProvider>
+        </ThemeProvider>
+      </LocalizationProvider>
     </>
   );
 }
@@ -52,4 +63,4 @@ export default App;
 
 // react-router-dom
 // 1. Routing
-// 2. Redirect (useNavigate(), to, useParam());
+// 2. Redirect (useNavigate(), to, useParams());
