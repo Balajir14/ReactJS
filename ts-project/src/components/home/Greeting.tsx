@@ -23,6 +23,9 @@ export default function Greeting() {
       <Button variant="outlined" onClick={() => navigate("/add-blog")}>
         Add Blog
       </Button>
+      <Button variant="outlined" onClick={() => navigate("/reducer")}>
+        Go go Reducer
+      </Button>
     </>
   );
 }

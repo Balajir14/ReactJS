@@ -15,6 +15,7 @@ import { lazy, Suspense } from "react";
 import BlogProvider from "./context/BlogContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import Reducer from "./components/home/Reducer";
 
 const Greeting = lazy(() => import("./components/home/Greeting"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -48,6 +49,8 @@ function App() {
                     <Route path="/add-blog" element={<AddBlog />} />
                     <Route path="/blog-list" element={<BlogList />} />
                     <Route path="/blog-detail/:id" element={<BlogDetail />} />
+
+                    <Route path="/reducer" element={<Reducer />} />
                   </Routes>
                 </Suspense>
               </BrowserRouter>
