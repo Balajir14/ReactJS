@@ -16,6 +16,10 @@ import BlogProvider from "./context/BlogContext";
 import { LocalizationProvider } from "@mui/x-date-pickers";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import Reducer from "./components/home/Reducer";
+import UseRefExample from "./components/hooks/UseRefExample";
+import UseRefFileUpload from "./components/hooks/UseRefFileUpload";
+import UseMemoExample from "./components/hooks/UseMemoExample";
+import UseMemoFilter from "./components/hooks/useMemoFilter";
 
 const Greeting = lazy(() => import("./components/home/Greeting"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -51,6 +55,10 @@ function App() {
                     <Route path="/blog-detail/:id" element={<BlogDetail />} />
 
                     <Route path="/reducer" element={<Reducer />} />
+                    <Route path="/ref" element={<UseRefExample />} />
+                    <Route path="/ref-file" element={<UseRefFileUpload />} />
+                    <Route path="/memo" element={<UseMemoExample />} />
+                    <Route path="/memo-filter" element={<UseMemoFilter />} />
                   </Routes>
                 </Suspense>
               </BrowserRouter>

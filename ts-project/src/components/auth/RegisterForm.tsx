@@ -38,6 +38,7 @@ export default function RegisterForm() {
   ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  console.log(formData);
 
   const age = ageCalculator(formData.dob);
 
