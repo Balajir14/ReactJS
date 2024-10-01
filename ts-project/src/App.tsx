@@ -20,6 +20,7 @@ import UseRefExample from "./components/hooks/UseRefExample";
 import UseRefFileUpload from "./components/hooks/UseRefFileUpload";
 import UseMemoExample from "./components/hooks/UseMemoExample";
 import UseMemoFilter from "./components/hooks/useMemoFilter";
+import BasicGrid from "./components/grid/GridComponent";
 
 const Greeting = lazy(() => import("./components/home/Greeting"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -31,6 +32,7 @@ const BlogDetail = lazy(() => import("./components/blog/BlogDetails"));
 function App() {
   return (
     <>
+      {/* <ErrorBoudary> */}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <ThemeProvider>
           <UserProvider>
@@ -59,6 +61,8 @@ function App() {
                     <Route path="/ref-file" element={<UseRefFileUpload />} />
                     <Route path="/memo" element={<UseMemoExample />} />
                     <Route path="/memo-filter" element={<UseMemoFilter />} />
+
+                    <Route path="/grid" element={<BasicGrid />} />
                   </Routes>
                 </Suspense>
               </BrowserRouter>
@@ -66,6 +70,7 @@ function App() {
           </UserProvider>
         </ThemeProvider>
       </LocalizationProvider>
+      {/* </ErrorBoudary> */}
     </>
   );
 }
