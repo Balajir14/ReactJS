@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 
 export default function UseMemoExample() {
   const [fieldValue, setFieldValue] = useState<string>("");

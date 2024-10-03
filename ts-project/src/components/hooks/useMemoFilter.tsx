@@ -3,7 +3,18 @@ import { useMemo, useState } from "react";
 export default function useMemoFilter() {
   const [search, setSearch] = useState("");
 
-  const [items, setItems] = useState([
+  // const [items, setItems] = useState([
+  //   "apple",
+  //   "banana",
+  //   "pineapple",
+  //   "mango",
+  //   "grapes",
+  //   "orange",
+  //   "kiwi",
+  //   "apple1",
+  // ]);
+
+  const items = [
     "apple",
     "banana",
     "pineapple",
@@ -12,7 +23,7 @@ export default function useMemoFilter() {
     "orange",
     "kiwi",
     "apple1",
-  ]);
+  ];
 
   const filterItems = useMemo(() => {
     return items.filter((item) =>

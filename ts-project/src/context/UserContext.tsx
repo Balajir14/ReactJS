@@ -11,7 +11,7 @@ export interface UserType {
   address: string;
   password: string;
   confirmPassword: string;
-}
+} // use this for registerSlice
 
 export type UserTypeWithoutAge = Omit<UserType, "age">;
 

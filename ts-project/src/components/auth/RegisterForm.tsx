@@ -1,8 +1,12 @@
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useEffect, useState } from "react";
 import { ageCalculator } from "../../common/ageCalculator";
 import { useCurrentUser, UserTypeWithoutAge } from "../../context/UserContext";
 import { FormErrors, validateForm } from "./validation";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../../store/store";
+import { setUser } from "../../store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 // interface FormDataType {
 //   firstName: string;
@@ -15,9 +19,14 @@ import { FormErrors, validateForm } from "./validation";
 //   password: string;
 //   confirmPassword: string;
 // }
+// const , var, let - js
+
 export default function RegisterForm() {
   const userContext = useCurrentUser();
   console.log(userContext?.users);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState<UserTypeWithoutAge>({
     firstName: "",
@@ -78,6 +87,9 @@ export default function RegisterForm() {
       // const newValues = {...formData, age}
 
       userContext?.storeUserData(newValue);
+
+      dispatch(setUser({ name: newValue.firstName, age: 10 }));
+      navigate("/");
     } else {
       alert("Validation required.");
     }

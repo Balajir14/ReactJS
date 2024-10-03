@@ -32,6 +32,7 @@ export default function Todo() {
   const [isEditing, setIsEditing] = useState<boolean>(false);
 
   const addTodo = () => {
+    if (!task) return;
     setAlert(false);
 
     const isDuplicate = todo.some(
@@ -57,6 +58,7 @@ export default function Todo() {
   };
 
   const updateTodo = () => {
+    if (!task) return;
     if (task.trim() && editingTaskId !== null) {
       const newValue = todo.map((item) =>
         item.id === editingTaskId ? { ...item, task } : item
