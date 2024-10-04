@@ -1,7 +1,10 @@
 Create a New Folder named Backup in your local system.
 run the command:
 
-1.  npm init -y 2. npm install express mysql2 cors 3. node server.js
+1.  npm init -y
+2.  npm install express mysql2 cors
+3.  copy the server.js file and place it in your root folder.
+4.  node server.js
 
 Database:
 
