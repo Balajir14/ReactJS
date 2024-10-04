@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../../store/store";
 import { setUser } from "../../store/userSlice";
 import { useNavigate } from "react-router-dom";
+import { setRegister } from "../../store/registerSlice";
 
 // interface FormDataType {
 //   firstName: string;
@@ -64,12 +65,8 @@ export default function RegisterForm() {
       password,
       confirmPassword,
     } = formData;
-
     const validatedErrors = validateForm(formData);
     setErrors(validatedErrors);
-
-    console.log(errors);
-
     if (Object.keys(validatedErrors).length === 0) {
       const newValue = {
         firstName,
@@ -83,17 +80,15 @@ export default function RegisterForm() {
         password,
         confirmPassword,
       };
-
+      dispatch(setRegister(newValue));
       // const newValues = {...formData, age}
-
       userContext?.storeUserData(newValue);
-
       dispatch(setUser({ name: newValue.firstName, age: 10 }));
       navigate("/");
     } else {
       alert("Validation required.");
     }
-  };
+  }; // handlesubmit close here
 
   return (
     <>

@@ -14,6 +14,8 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import EditIcon from "@mui/icons-material/Edit";
 import { useEffect, useState } from "react";
 import { getColor } from "../../common/todo";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface Todo {
   id: number;
@@ -22,6 +24,8 @@ interface Todo {
 }
 
 export default function Todo() {
+  const registerData = useSelector((state: RootState) => state.register);
+  console.log(registerData);
   const [task, setTask] = useState<string>();
   const [todo, setTodo] = useState<Todo[]>([]);
   const [alert, setAlert] = useState<boolean>(false);
@@ -92,6 +96,7 @@ export default function Todo() {
 
   return (
     <>
+      <h1>Welcome {registerData.firstName} </h1>
       {alert && <Alert severity="warning">Oops! Something went wrong.</Alert>}
       <Container
         maxWidth="sm"

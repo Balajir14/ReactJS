@@ -10,14 +10,14 @@ export default function Greeting() {
   const data = useTheme();
   const navigate = useNavigate();
 
-  const userData = useSelector((state: RootState) => state.user);
+  // const userData = useSelector((state: RootState) => state.user);
 
-  // const registerData = useSelector((state: RootState) => state.register);
-  // console.log(registerData);
+  const registerData = useSelector((state: RootState) => state.register);
+  console.log(registerData);
 
   return (
     <>
-      <h1>Welcome {userData.name} </h1>
+      <h1>Welcome {registerData.firstName} </h1>
       <DatePicker />
       <DateTimePicker label="Basic date time picker" />
       My current Theme is: {data?.theme}
