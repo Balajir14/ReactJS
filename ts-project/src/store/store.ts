@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "./userSlice";
 import registerReducer from "./registerSlice";
+import crudReducer from "./crudSlice";
 
 const store = configureStore({
   reducer: {
     user: userReducer,
     register: registerReducer,
+    crud: crudReducer,
   },
 });
 

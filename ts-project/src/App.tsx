@@ -23,6 +23,9 @@ import UseMemoFilter from "./components/hooks/useMemoFilter";
 import BasicGrid from "./components/grid/GridComponent";
 import { Provider } from "react-redux";
 import store from "./store/store";
+import AddUser from "./components/crud/AddUser";
+import ShowUser from "./components/crud/ShowUser";
+import UpdateUser from "./components/crud/UpdateUser";
 
 const Greeting = lazy(() => import("./components/home/Greeting"));
 const Home = lazy(() => import("./components/home/Home"));
@@ -43,7 +46,11 @@ function App() {
                 <BrowserRouter>
                   <Suspense fallback={<div>Loading...</div>}>
                     <Routes>
-                      <Route path="/" element={<Greeting />} />
+                      <Route path="/" element={<ShowUser />} />
+                      <Route path="/add-user" element={<AddUser />} />
+                      <Route path="/edit-user/:id" element={<UpdateUser />} />
+
+                      <Route path="/greet" element={<Greeting />} />
                       <Route path="/home" element={<Home />} />
                       <Route path="/table" element={<TableComponent />} />
                       <Route path="/api" element={<ApiTable />} />
