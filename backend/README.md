@@ -24,3 +24,11 @@ Database:
     email VARCHAR(255) NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
+
+
+
+
+To run this backend:
+1. npm install
+2. create db name in MySQL and paste the same in server.js file Line number: 10
+3. node server.js
